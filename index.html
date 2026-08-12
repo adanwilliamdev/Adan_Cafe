@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adan Café ☕</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="header">
+        <div class="container header__container">
+            <a href="#" class="logo" aria-label="Adan Café">
+                <i class="fas fa-mug-hot" aria-hidden="true"></i>
+                <span>Adan</span> Café
+            </a>
+
+            <nav class="nav" aria-label="Navegação principal">
+                <ul class="nav__list">
+                    <li><a href="#hero" class="nav__link active">Início</a></li>
+                    <li><a href="#menu" class="nav__link">Menu</a></li>
+                    <li><a href="#footer" class="nav__link">Contato</a></li>
+                </ul>
+            </nav>
+
+            <div class="header__actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="cart-btn" id="cartBtn" aria-label="Abrir carrinho">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="hero">
+        <div class="container hero__container">
+            <div class="hero__content">
+                <span class="hero__badge">✦ Especialidade</span>
+                <h1 class="hero__title">
+                    <span id="typedText"></span>
+                </h1>
+                <p class="hero__subtitle">
+                    Onde cada xícara conta uma história. Experimente cafés especiais,
+                    chás artesanais e doces finos em um ambiente contemporâneo.
+                </p>
+                <a href="#menu" class="btn btn--primary hero__cta">
+                    <i class="fas fa-arrow-down"></i> Ver Menu
+                </a>
+            </div>
+            <div class="hero__image">
+                <div class="hero__decoration">
+                    <i class="fas fa-mug-saucer"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MENU SECTION ===== -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="menu__header">
+                <h2 class="menu__title">Nosso <span>Menu</span></h2>
+                <p class="menu__description">
+                    Selecionamos os melhores grãos, folhas e ingredientes para você.
+                </p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs" id="tabs">
+                <button class="tab-btn active" data-category="coffees">
+                    <i class="fas fa-mug-hot"></i> Cafés Especiais
+                </button>
+                <button class="tab-btn" data-category="teas">
+                    <i class="fas fa-leaf"></i> Chás Artesanais
+                </button>
+                <button class="tab-btn" data-category="sweets">
+                    <i class="fas fa-cake"></i> Doces Finos
+                </button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="menu__grid" id="menuGrid">
+                <!-- Products will be dynamically rendered by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="footer">
+        <div class="container footer__container">
+            <div class="footer__brand">
+                <a href="#" class="logo">
+                    <i class="fas fa-mug-hot" aria-hidden="true"></i>
+                    <span>Cafeteria</span> Moderna
+                </a>
+                <p class="footer__description">
+                    Cafeteria especializada em experiências sensoriais únicas.
+                </p>
+                <div class="footer__social">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer__info">
+                <h4>Horário de Funcionamento</h4>
+                <ul>
+                    <li><span>Segunda - Sexta:</span> 08:00 - 20:00</li>
+                    <li><span>Sábado:</span> 09:00 - 18:00</li>
+                    <li><span>Domingo:</span> 10:00 - 16:00</li>
+                </ul>
+            </div>
+
+            <div class="footer__info">
+                <h4>Contato</h4>
+                <ul>
+                    <li><i class="fas fa-phone"></i> (11) 99999-9999</li>
+                    <li><i class="fas fa-envelope"></i> contato@cafeteriamoderna.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - SP</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; 2026 Adan Café. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- ===== SIDE CART ===== -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart" id="cart" role="dialog" aria-label="Carrinho de compras">
+        <div class="cart__header">
+            <h3><i class="fas fa-shopping-bag"></i> Seu Carrinho</h3>
+            <button class="cart__close" id="cartClose" aria-label="Fechar carrinho">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart__items" id="cartItems">
+            <p class="cart__empty">Seu carrinho está vazio <br/> ☕ Adicione seus favoritos!</p>
+        </div>
+        <div class="cart__footer">
+            <div class="cart__total">
+                <span>Subtotal</span>
+                <strong id="cartTotal">R$ 0,00</strong>
+            </div>
+            <button class="btn btn--primary cart__checkout" id="checkoutBtn">
+                <i class="fas fa-check"></i> Finalizar Pedido
+            </button>
+        </div>
+    </aside>
+
+    <!-- ===== TOAST CONTAINER ===== -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
