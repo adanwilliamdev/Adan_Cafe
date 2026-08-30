@@ -1,260 +1,92 @@
 # ☕ Adan Café
 
-[![Vercel](https://img.shields.io/badge/deploy-Vercel-000000?style=for-the-badge\&logo=vercel\&logoColor=white)](https://adan-cafe-zhuw.vercel.app/)
-[![GitHub](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](LICENSE)
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge\&logo=html5\&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge\&logo=css3\&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge\&logo=javascript\&logoColor=black)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+Cafeteria especializada em experiências sensoriais únicas — cafés especiais, chás
+artesanais e doces finos. Aplicação de e-commerce simples (catálogo + carrinho +
+checkout) migrada de HTML/CSS/JS puro para uma stack de front-end moderna.
 
-> ☕ Um menu digital moderno e elegante para uma cafeteria specialty, desenvolvido com foco em experiência do usuário, responsividade e interações fluidas.
+## Stack
 
-## 🌐 Demonstração
+| Camada         | Escolha                                             |
+| -------------- | ---------------------------------------------------- |
+| Build          | Vite                                                   |
+| Linguagem      | TypeScript                                             |
+| UI             | React 18/19 + componentes funcionais                   |
+| Estado         | Context API + `useReducer` (carrinho centralizado)     |
+| Estilo         | CSS Modules (reaproveitando as variáveis originais)    |
+| Dados          | Mock via `fetch` a `public/products.json`              |
+| Checkout       | React Hook Form + Zod                                  |
+| Testes         | Vitest + Testing Library (unit/component) + Playwright (e2e) |
+| Qualidade      | ESLint + Prettier + Husky (pre-commit)                 |
+| CI/CD          | GitHub Actions (lint + test em PR) + deploy no Vercel   |
+| Acessibilidade | Foco preso no modal do carrinho, navegação por teclado, contraste checado |
+| Extra          | PWA leve (installable) via `vite-plugin-pwa`            |
 
-**Projeto online:**
-👉 [adan-cafe-zhuw.vercel.app](https://adan-cafe-zhuw.vercel.app/)
-
-## ✨ Funcionalidades
-
-### 🎨 Design & Experiência
-
-* 🪟 **Glassmorphism** nos cards e carrinho
-* 🌙 **Tema Claro/Escuro** com persistência no navegador
-* ✨ **Micro-interações** e animações fluidas
-* 🔤 **Tipografia elegante** com Inter + Playfair Display
-* 📱 **Design responsivo** para desktop, tablet e mobile
-* 🎯 Interface focada em simplicidade e experiência do usuário
-
-### 🛒 Menu e Carrinho
-
-* ☕ **Cafés Especiais**
-* 🍵 **Chás Artesanais**
-* 🍰 **Doces Finos**
-* 🃏 Cards interativos para cada produto
-* ➕ Adição rápida de produtos ao carrinho
-* 💧 Efeito **Ripple** nos botões
-* 🛒 Carrinho lateral com resumo dos pedidos
-* 🔔 Notificações Toast para ações do usuário
-* 🔢 Contador dinâmico de itens
-
-### 🔊 Recursos Técnicos
-
-* 🎵 **Web Audio API** para sons de interação
-* 📜 **Smooth Scroll** para navegação entre seções
-* 💾 **LocalStorage** para persistência do tema
-* ⚡ JavaScript Vanilla sem frameworks pesados
-* ♿ HTML semântico visando acessibilidade
-* 🔍 Estrutura preparada para boas práticas de SEO
-
-## 🛠️ Tecnologias
-
-### Frontend
-
-| Tecnologia        | Utilização                         |
-| ----------------- | ---------------------------------- |
-| **HTML5**         | Estrutura semântica                |
-| **CSS3**          | Layout, animações e responsividade |
-| **JavaScript**    | Lógica e interações                |
-| **Web Audio API** | Sons das interações                |
-| **LocalStorage**  | Persistência do tema               |
-
-### Bibliotecas & Recursos
-
-* **[Google Fonts](https://fonts.google.com/)**
-  Inter + Playfair Display
-
-* **[Font Awesome](https://fontawesome.com/)**
-  Ícones da interface
-
-* **[Web Audio API](https://developer.mozilla.org/pt-BR/docs/Web/API/Web_Audio_API)**
-  Sons sintéticos para interações
-
-### Deploy
-
-* **[Vercel](https://vercel.com/)** - Hospedagem e deploy contínuo
-
-## 📂 Estrutura do Projeto
-
-```text
-AdanCafe/
-├── index.html
-├── css/
-│   └── style.css
-├── js/
-│   ├── data.js
-│   └── main.js
-├── assets/
-│   ├── icons/
-│   └── images/
-├── LICENSE
-└── README.md
-```
-
-## 🚀 Executando Localmente
-
-### Pré-requisitos
-
-* Navegador moderno
-* VS Code ou outro editor
-* Extensão **Live Server** recomendada
-
-### 1. Clone o projeto
+## Como rodar
 
 ```bash
-git clone https://github.com/adanwilliamdev/adan-cafe.git
+npm install
+npm run dev
 ```
 
-### 2. Entre no diretório
+## Scripts disponíveis
 
 ```bash
-cd adan-cafe
+npm run dev           # ambiente de desenvolvimento
+npm run build          # build de produção (tsc + vite build)
+npm run preview        # serve o build de produção localmente
+npm run lint           # ESLint
+npm run format          # Prettier (aplica formatação)
+npm run format:check    # Prettier (apenas verifica)
+npm run test             # testes unitários/componente (Vitest)
+npm run test:watch       # Vitest em modo watch
+npm run test:e2e         # testes end-to-end (Playwright)
 ```
 
-### 3. Abra no VS Code
+Na primeira instalação, o Husky é configurado automaticamente (`prepare` script) e
+passa a rodar lint + format nos arquivos staged antes de cada commit.
+
+Para os testes e2e, é necessário baixar os browsers do Playwright uma vez:
 
 ```bash
-code .
+npx playwright install --with-deps chromium
 ```
 
-### 4. Execute
+## Estrutura
 
-Abra o arquivo `index.html` utilizando o **Live Server**.
-
-Também é possível abrir o `index.html` diretamente no navegador.
-
-## 📱 Responsividade
-
-| Dispositivo |       Breakpoint | Layout            |
-| ----------- | ---------------: | ----------------- |
-| 🖥️ Desktop |       `> 1024px` | Grid completo     |
-| 💻 Tablet   | `768px - 1024px` | Grid de 2 colunas |
-| 📱 Mobile   |        `< 768px` | Coluna única      |
-
-## 🎨 Paleta de Cores
-
-| Cor               | Hexadecimal | Aplicação             |
-| ----------------- | ----------- | --------------------- |
-| ☕ Café            | `#6F4E37`   | Cor principal         |
-| 🟤 Café Claro     | `#8B6B4F`   | Elementos secundários |
-| 🍮 Caramelo       | `#C8956C`   | Destaques e badges    |
-| 🟫 Caramelo Claro | `#DDB892`   | Hover e bordas        |
-| 🤍 Off-white      | `#FAF8F5`   | Fundo claro           |
-| 🖤 Marrom Escuro  | `#2C1810`   | Textos                |
-
-## 🔧 Personalização
-
-### ➕ Adicionando Produtos
-
-Os produtos podem ser adicionados ou alterados no arquivo:
-
-```text
-js/data.js
+```
+src/
+  components/    # um componente por pasta, com seu .module.css
+  context/       # CartContext (Context API + useReducer)
+  hooks/         # useProducts, useTheme, useFocusTrap
+  types/         # Product, CartItem, Category
+  styles/        # variáveis CSS globais (tema claro/escuro)
+public/
+  products.json  # catálogo mock, consumido via fetch
+tests/
+  unit/          # Vitest + Testing Library
+  e2e/           # Playwright
 ```
 
-Exemplo:
+## Acessibilidade
 
-```javascript
-{
-    id: 'c7',
-    name: 'Nome do Produto',
-    description: 'Descrição curta do produto',
-    price: 19.90,
-    icon: '☕'
-}
-```
+- Foco preso (focus trap) no drawer do carrinho e no modal de checkout, com
+  fechamento via `Esc` e retorno do foco ao elemento que abriu o modal.
+- Navegação completa por teclado nas abas do menu, botões e formulário.
+- Contraste de cores mantido a partir da paleta original (temas claro/escuro).
+- Animações respeitam `prefers-reduced-motion`.
 
-### 🎨 Alterando as Cores
+## CI/CD
 
-As principais cores da aplicação estão definidas no arquivo:
+- `.github/workflows/ci.yml`: roda lint, checagem de tipos, testes unitários,
+  build e testes e2e em todo PR/push para `main`.
+- `.github/workflows/deploy.yml`: build e deploy automático no Vercel a cada
+  push em `main`. Requer o secret `VERCEL_TOKEN` (e, dependendo da conta,
+  `VERCEL_ORG_ID`/`VERCEL_PROJECT_ID` via `vercel link` local antes do primeiro
+  deploy) configurado no repositório.
 
-```text
-css/style.css
-```
+## PWA
 
-Exemplo:
-
-```css
-:root {
-    --color-primary: #6F4E37;
-    --color-secondary: #C8956C;
-}
-```
-
-O tema escuro utiliza:
-
-```css
-[data-theme="dark"]
-```
-
-## ⚡ Performance
-
-O projeto foi desenvolvido buscando manter uma aplicação leve e rápida:
-
-* ⚡ JavaScript Vanilla
-* 📦 Sem frameworks pesados
-* 🚀 Carregamento rápido
-* 🪶 Código enxuto
-* 🔤 Google Fonts com `display: swap`
-* 💾 Persistência local sem necessidade de backend
-
-## 🤝 Contribuição
-
-Contribuições são bem-vindas!
-
-1. Faça um Fork do projeto
-2. Crie uma nova branch:
-
-```bash
-git checkout -b feature/nova-funcionalidade
-```
-
-3. Faça suas alterações
-4. Commit:
-
-```bash
-git commit -m "Adiciona nova funcionalidade"
-```
-
-5. Envie para o GitHub:
-
-```bash
-git push origin feature/nova-funcionalidade
-```
-
-6. Abra um Pull Request
-
-## 📄 Licença
-
-Este projeto está disponível sob a licença **MIT**.
-
-Consulte o arquivo [LICENSE](LICENSE) para mais informações.
-
-## 👤 Autor
-
-### Adan William
-
-**Java Full Stack Developer in Progress | Analyst of TI | ADS Student**
-
-* 💻 GitHub: [@adanwilliamdev](https://github.com/adanwilliamdev)
-* ☕ Projeto: [Adan Café](https://adan-cafe-zhuw.vercel.app/)
-
-## 🙏 Agradecimentos
-
-* ☕ Inspiração em cafeterias specialty
-* 🎨 Design moderno e minimalista
-* 🔤 [Google Fonts](https://fonts.google.com/)
-* 🎯 [Font Awesome](https://fontawesome.com/)
-* ▲ [Vercel](https://vercel.com/)
-
-## 🌐 Links
-
-| Recurso       | Link                                                            |
-| ------------- | --------------------------------------------------------------- |
-| ☕ **Demo**    | [adan-cafe-zhuw.vercel.app](https://adan-cafe-zhuw.vercel.app/) |
-| 💻 **GitHub** | [adanwilliamdev](https://github.com/adanwilliamdev)             |
-| ▲ **Vercel**  | [vercel.com](https://vercel.com/)                               |
-
----
-
-⭐ **Gostou do projeto? Deixe uma estrela no GitHub!**
-
-☕ *Adan Café. Código, café e boas ideias.*
+O app é instalável (manifest + service worker via `vite-plugin-pwa`, modo
+`autoUpdate`). Para gerar ícones definitivos, substitua os placeholders
+referenciados em `vite.config.ts` (`pwa-192x192.png`, `pwa-512x512.png`) em
+`public/`.
