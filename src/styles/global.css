@@ -5,7 +5,7 @@
   /* Primary Colors - Coffee Theme */
   --color-primary: #6f4e37;
   --color-primary-light: #8b6b4f;
-  --color-primary-dark: #4a3222;
+  --color-primary-dark: #3c2818;
 
   --color-secondary: #c8956c;
   --color-secondary-light: #ddb892;
@@ -15,25 +15,32 @@
   --color-off-white: #faf8f5;
   --color-warm-white: #fdfbf7;
 
-  --color-text: #2c1810;
+  --color-text: #241209;
   --color-text-light: #5a3e32;
   --color-text-lighter: #8a6e62;
 
   /* UI Colors */
   --color-bg: #faf8f5;
   --color-card-bg: rgba(255, 252, 249, 0.85);
-  --color-card-border: rgba(111, 78, 55, 0.15);
+  --color-card-border: rgba(111, 78, 55, 0.14);
 
-  --color-shadow: rgba(44, 24, 16, 0.1);
-  --color-shadow-hover: rgba(44, 24, 16, 0.18);
+  --color-shadow: rgba(44, 24, 16, 0.08);
+  --color-shadow-hover: rgba(44, 24, 16, 0.16);
 
   --color-danger: #b3261e;
   --color-success: #2e7d32;
 
   /* Glassmorphism */
-  --glass-bg: rgba(255, 252, 249, 0.75);
-  --glass-border: rgba(111, 78, 55, 0.15);
+  --glass-bg: rgba(255, 252, 249, 0.7);
+  --glass-border: rgba(111, 78, 55, 0.14);
   --glass-shadow: 0 8px 32px rgba(44, 24, 16, 0.08);
+
+  /* Layered elevation — sombras compostas para profundidade sutil */
+  --elevation-sm: 0 1px 2px rgba(44, 24, 16, 0.06), 0 2px 8px rgba(44, 24, 16, 0.05);
+  --elevation-md:
+    0 2px 4px rgba(44, 24, 16, 0.06), 0 12px 28px -8px rgba(44, 24, 16, 0.16);
+  --elevation-lg:
+    0 4px 8px rgba(44, 24, 16, 0.08), 0 24px 48px -12px rgba(44, 24, 16, 0.22);
 
   /* Typography */
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -46,17 +53,20 @@
   --spacing-lg: 32px;
   --spacing-xl: 48px;
   --spacing-xxl: 64px;
+  --spacing-xxxl: 96px;
 
   /* Border Radius */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 20px;
   --radius-xl: 28px;
+  --radius-pill: 999px;
 
-  /* Transitions */
-  --transition-fast: 0.2s ease;
-  --transition-medium: 0.3s ease;
-  --transition-slow: 0.5s ease;
+  /* Transitions — curva fluida para movimentos mais orgânicos */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-medium: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-fluid: cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Container */
   --container-max: 1200px;
@@ -89,6 +99,10 @@
   --color-shadow: rgba(0, 0, 0, 0.3);
   --color-shadow-hover: rgba(0, 0, 0, 0.5);
 
+  --elevation-sm: 0 1px 2px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.2);
+  --elevation-md: 0 2px 4px rgba(0, 0, 0, 0.25), 0 12px 28px -8px rgba(0, 0, 0, 0.45);
+  --elevation-lg: 0 4px 8px rgba(0, 0, 0, 0.3), 0 24px 48px -12px rgba(0, 0, 0, 0.55);
+
   --color-cream: #2c1810;
   --color-off-white: #1a100c;
   --color-warm-white: #221812;
@@ -112,7 +126,13 @@ html {
 body {
   font-family: var(--font-body);
   background-color: var(--color-bg);
+  background-image:
+    radial-gradient(circle at 12% 0%, rgba(200, 149, 108, 0.08), transparent 45%),
+    radial-gradient(circle at 100% 15%, rgba(111, 78, 55, 0.06), transparent 40%);
+  background-attachment: fixed;
   color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
   transition:
     background-color var(--transition-medium),
     color var(--transition-medium);

@@ -2,14 +2,22 @@
   position: sticky;
   top: 0;
   z-index: var(--z-header);
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--glass-border);
-  transition: box-shadow var(--transition-medium);
+  background: transparent;
+  backdrop-filter: blur(0px);
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color var(--transition-medium),
+    backdrop-filter var(--transition-medium),
+    border-color var(--transition-medium),
+    box-shadow var(--transition-medium),
+    padding var(--transition-medium);
 }
 
 .headerScrolled {
-  box-shadow: 0 4px 20px var(--color-shadow);
+  background: var(--glass-bg);
+  backdrop-filter: blur(18px) saturate(1.4);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--elevation-sm);
 }
 
 .container {
@@ -17,8 +25,13 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--spacing-md);
-  padding-block: var(--spacing-sm);
+  padding-block: var(--spacing-md);
+  transition: padding var(--transition-medium);
   position: relative;
+}
+
+.headerScrolled .container {
+  padding-block: var(--spacing-sm);
 }
 
 .logo {
@@ -27,8 +40,14 @@
   gap: var(--spacing-xs);
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
+  letter-spacing: 0.01em;
   color: var(--color-primary);
+  transition: opacity var(--transition-fast);
+}
+
+.logo:hover {
+  opacity: 0.82;
 }
 
 .logo span {
@@ -64,15 +83,36 @@
 }
 
 .navLink {
+  position: relative;
   font-weight: 600;
+  font-size: 0.95rem;
   color: var(--color-text-light);
   transition: color var(--transition-fast);
-  padding: var(--spacing-xs);
+  padding: var(--spacing-xs) 2px;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  bottom: 0;
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background: var(--color-secondary-dark);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-medium);
 }
 
 .navLink:hover,
 .navLinkActive {
   color: var(--color-primary);
+}
+
+.navLink:hover::after,
+.navLinkActive::after {
+  transform: scaleX(1);
 }
 
 .actions {
@@ -91,12 +131,17 @@
   border-radius: 50%;
   background: var(--color-card-bg);
   border: 1px solid var(--color-card-border);
-  font-size: 1.1rem;
-  transition: transform var(--transition-fast);
+  font-size: 1.05rem;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast);
 }
 
 .iconBtn:hover {
   transform: translateY(-2px);
+  box-shadow: var(--elevation-sm);
+  border-color: var(--color-secondary);
 }
 
 .cartBadge {

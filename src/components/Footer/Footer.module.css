@@ -1,5 +1,5 @@
 .footer {
-  background: var(--color-primary-dark);
+  background: linear-gradient(160deg, var(--color-primary-dark), #2a1a10);
   color: var(--color-cream);
   margin-top: var(--spacing-xxl);
 }
@@ -40,11 +40,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background var(--transition-fast);
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .social a:hover {
   background: var(--color-secondary-dark);
+  transform: translateY(-2px);
 }
 
 .info h4 {

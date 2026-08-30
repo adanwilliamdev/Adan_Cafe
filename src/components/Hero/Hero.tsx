@@ -3,6 +3,12 @@ import styles from './Hero.module.css'
 
 const PHRASES = ['Café Especial', 'Chá Artesanal', 'Doce Fino']
 
+const FEATURES = [
+  { icon: 'fas fa-seedling', label: 'Grãos 100% arábica' },
+  { icon: 'fas fa-fire', label: 'Torra artesanal diária' },
+  { icon: 'fas fa-heart', label: 'Feito à mão, com carinho' },
+]
+
 function getInitialReducedMotion() {
   if (typeof window === 'undefined') return false
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -67,25 +73,43 @@ export function Hero() {
   return (
     <section className={styles.hero} id="hero">
       <div className={`container ${styles.container}`}>
-        <div>
-          <span className={styles.badge}>✦ Especialidade</span>
+        <div className={styles.copy}>
+          <span className={styles.badge}>
+            <span className={styles.badgeDot} aria-hidden="true" />
+            Especialidade da casa
+          </span>
           <h1 className={styles.title}>
             {firstWord}
             {highlighted && ' '}
             <span className={styles.highlight}>{highlighted}</span>
-            <span aria-hidden="true">|</span>
+            <span className={styles.cursor} aria-hidden="true" />
           </h1>
           <p className={styles.subtitle}>
             Onde cada xícara conta uma história. Experimente cafés especiais, chás
             artesanais e doces finos em um ambiente contemporâneo.
           </p>
-          <a href="#menu" className={styles.cta}>
-            <i className="fas fa-arrow-down" aria-hidden="true" /> Ver Menu
-          </a>
+          <div className={styles.actions}>
+            <a href="#menu" className={styles.cta}>
+              Ver Menu <i className="fas fa-arrow-down" aria-hidden="true" />
+            </a>
+          </div>
+          <ul className={styles.features}>
+            {FEATURES.map((feature) => (
+              <li key={feature.label} className={styles.feature}>
+                <i className={feature.icon} aria-hidden="true" />
+                {feature.label}
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className={styles.imageWrap}>
-          <div className={styles.decoration} aria-hidden="true">
+        <div className={styles.imageWrap} aria-hidden="true">
+          <div className={styles.ring} />
+          <div className={styles.decoration}>
             <i className="fas fa-mug-saucer" />
+          </div>
+          <div className={styles.floatBadge}>
+            <i className="fas fa-star" />
+            <span>Torra do dia</span>
           </div>
         </div>
       </div>
