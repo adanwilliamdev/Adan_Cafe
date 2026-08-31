@@ -1,0 +1,10 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "installCommand": "npm install --ignore-scripts",
+  "regions": ["iad1"],
+  "github": {
+    "silent": true
+  }
+}
