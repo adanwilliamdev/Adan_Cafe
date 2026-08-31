@@ -12,8 +12,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "preview": "vite preview",
-    "prepare": "husky || true"
+    "preview": "vite preview"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
