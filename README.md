@@ -6,20 +6,20 @@ checkout) migrada de HTML/CSS/JS puro para uma stack de front-end moderna.
 
 ## Stack
 
-| Camada         | Escolha                                             |
-| -------------- | ---------------------------------------------------- |
-| Build          | Vite                                                   |
-| Linguagem      | TypeScript                                             |
-| UI             | React 18/19 + componentes funcionais                   |
-| Estado         | Context API + `useReducer` (carrinho centralizado)     |
-| Estilo         | CSS Modules (reaproveitando as variáveis originais)    |
-| Dados          | Mock via `fetch` a `public/products.json`              |
-| Checkout       | React Hook Form + Zod                                  |
-| Testes         | Vitest + Testing Library (unit/component) + Playwright (e2e) |
-| Qualidade      | ESLint + Prettier + Husky (pre-commit)                 |
-| CI/CD          | GitHub Actions (lint + test em PR) + deploy no Vercel   |
+| Camada         | Escolha                                                                   |
+| -------------- | ------------------------------------------------------------------------- |
+| Build          | Vite                                                                      |
+| Linguagem      | TypeScript                                                                |
+| UI             | React 18/19 + componentes funcionais                                      |
+| Estado         | Context API + `useReducer` (carrinho centralizado)                        |
+| Estilo         | CSS Modules (reaproveitando as variáveis originais)                       |
+| Dados          | Mock via `fetch` a `public/products.json`                                 |
+| Checkout       | React Hook Form + Zod                                                     |
+| Testes         | Vitest + Testing Library (unit/component) + Playwright (e2e)              |
+| Qualidade      | ESLint + Prettier + Husky (pre-commit)                                    |
+| CI/CD          | GitHub Actions (lint + test em PR) + deploy no Vercel                     |
 | Acessibilidade | Foco preso no modal do carrinho, navegação por teclado, contraste checado |
-| Extra          | PWA leve (installable) via `vite-plugin-pwa`            |
+| Extra          | PWA leve (installable) via `vite-plugin-pwa`                              |
 
 ## Como rodar
 

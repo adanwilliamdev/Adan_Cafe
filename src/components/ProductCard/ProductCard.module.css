@@ -21,11 +21,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(
-    90deg,
-    var(--color-secondary),
-    var(--color-primary-light)
-  );
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary-light));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--transition-medium);
