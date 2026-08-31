@@ -1,51 +1,76 @@
-import { useState } from 'react'
-import { CartDrawer } from './components/Cart/CartDrawer'
-import { CheckoutForm } from './components/CheckoutForm/CheckoutForm'
-import { Footer } from './components/Footer/Footer'
-import { Header } from './components/Header/Header'
-import { Hero } from './components/Hero/Hero'
-import { Menu } from './components/Menu/Menu'
-import { useToast } from './components/Toast/ToastProvider'
-import type { Product } from './types'
+import { useMemo, useState } from "react";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Shop from "./components/Shop";
+import Cart from "./components/Cart";
+import Footer from "./components/Footer";
+import type { CartItem, Product } from "./types";
 
-function App() {
-  const [cartOpen, setCartOpen] = useState(false)
-  const [checkoutOpen, setCheckoutOpen] = useState(false)
-  const { showToast } = useToast()
+export default function App() {
+  const [cart, setCart] = useState<Record<string, CartItem>>({});
+  const [cartOpen, setCartOpen] = useState(false);
 
-  function handleAddToCart(product: Product) {
-    showToast(`Item adicionado! ${product.icon} ${product.name}`)
-  }
+  const handleAdd = (product: Product) => {
+    setCart((prev) => {
+      const existing = prev[product.id];
+      return {
+        ...prev,
+        [product.id]: {
+          product,
+          quantity: (existing?.quantity ?? 0) + 1,
+        },
+      };
+    });
+    setCartOpen(true);
+  };
 
-  function handleCheckoutStart() {
-    setCartOpen(false)
-    setCheckoutOpen(true)
-  }
+  const handleIncrease = (id: string) => {
+    setCart((prev) => {
+      const item = prev[id];
+      if (!item) return prev;
+      return { ...prev, [id]: { ...item, quantity: item.quantity + 1 } };
+    });
+  };
 
-  function handleCheckoutSuccess() {
-    showToast('✅ Pedido finalizado com sucesso!')
-  }
+  const handleDecrease = (id: string) => {
+    setCart((prev) => {
+      const item = prev[id];
+      if (!item) return prev;
+      if (item.quantity <= 1) {
+        const { [id]: _removed, ...rest } = prev;
+        return rest;
+      }
+      return { ...prev, [id]: { ...item, quantity: item.quantity - 1 } };
+    });
+  };
+
+  const items = useMemo(() => Object.values(cart), [cart]);
+  const quantities = useMemo(() => {
+    const map: Record<string, number> = {};
+    items.forEach((item) => {
+      map[item.product.id] = item.quantity;
+    });
+    return map;
+  }, [items]);
+  const cartCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <>
-      <Header onOpenCart={() => setCartOpen(true)} />
+      <Header cartCount={cartCount} onCartClick={() => setCartOpen(true)} />
       <main>
         <Hero />
-        <Menu onAddToCart={handleAddToCart} />
+        <About />
+        <Shop quantities={quantities} onAdd={handleAdd} />
       </main>
       <Footer />
-      <CartDrawer
+      <Cart
         open={cartOpen}
+        items={items}
         onClose={() => setCartOpen(false)}
-        onCheckout={handleCheckoutStart}
-      />
-      <CheckoutForm
-        open={checkoutOpen}
-        onClose={() => setCheckoutOpen(false)}
-        onSuccess={handleCheckoutSuccess}
+        onIncrease={handleIncrease}
+        onDecrease={handleDecrease}
       />
     </>
-  )
+  );
 }
-
-export default App

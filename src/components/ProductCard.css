@@ -1,0 +1,92 @@
+.product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.product-card--signature {
+  border-color: var(--accent);
+  background: linear-gradient(165deg, var(--surface-alt), var(--surface));
+}
+
+.product-card__note {
+  margin: 0;
+  font-size: 0.76rem;
+  color: var(--accent-soft);
+  font-style: italic;
+}
+
+.product-card__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.product-card__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.product-card__dot--cafe {
+  background: var(--accent);
+}
+
+.product-card__dot--cha {
+  background: var(--tea);
+}
+
+.product-card__dot--sobremesa {
+  background: var(--dessert);
+}
+
+.product-card__name {
+  font-family: var(--font-display);
+  font-weight: 450;
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.product-card__desc {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.product-card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.product-card__price {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.product-card__add {
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.product-card__add:hover {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #241a0d;
+}
